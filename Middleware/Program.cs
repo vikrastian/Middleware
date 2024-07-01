@@ -13,6 +13,13 @@ app.Use(async (HttpContext context, RequestDelegate next) =>
 });
 
 // Middleware 2
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("\n\n");
+    await next(context);
+});
+
+// Middleware 3
 app.Run(async (HttpContext context) =>
 {
     await context.Response.WriteAsync("This is my first ASP.NET Core APP!");
